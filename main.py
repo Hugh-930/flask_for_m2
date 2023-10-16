@@ -124,17 +124,18 @@ def error_category(edit):
     return prefix, code, pos
 
 
-def main():
-    m2_file = "./ABC.train.gold.bea19.m2"
+def main(args):
+    # m2_file = "./ABC.train.gold.bea19.m2"
+    m2_file = args.m2_file
     m2 = open(m2_file, encoding="utf-8").read().strip().split("\n\n")
     m2_to_sentences(m2)
 
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("m2_file", help="path to the m2 file")
-    # args = parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("m2_file", help="path to the m2 file")
+    args = parser.parse_args()
 
-    main()
+    main(args)
 
     app.run()
