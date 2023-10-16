@@ -1,0 +1,107 @@
+ADJ 
+Adjective 
+big → wide
+
+ADJ:FORM 
+Adjective Form
+Comparative or superlative adjective errors.
+goodest → best, bigger → biggest, more easy → easier
+
+ADV 
+Adverb 
+speedily → quickly
+
+CONJ 
+Conjunction 
+and → but
+
+CONTR 
+Contraction 
+n’t → not
+
+DET 
+Determiner 
+the → a
+
+MORPH 
+Morphology
+Tokens have the same lemma but nothing else in common.
+quick (adj) → quickly (adv)
+
+NOUN 
+Noun 
+person → people
+
+NOUN:INFL 
+Noun Inflection
+Count-mass noun errors.
+informations → information
+
+NOUN:NUM 
+Noun Number 
+cat → cats
+
+NOUN:POSS 
+Noun Possessive 
+friends → friend’s
+
+ORTH 
+Orthography
+Case and/or whitespace errors.
+Bestfriend → best friend
+
+OTHER 
+Other
+Errors that do not fall into any other category (e.g. paraphrasing).
+at his best → well, job → professional
+
+PART 
+Particle 
+(look) in → (look) at
+
+PREP 
+Preposition 
+of → at
+
+PRON 
+Pronoun 
+ours → ourselves
+
+PUNCT 
+Punctuation 
+! → .
+
+SPELL 
+Spelling 
+genectic → genetic, color → colour
+
+UNK 
+Unknown 
+The annotator detected an error but was unable to correct it.
+
+VERB 
+Verb 
+ambulate → walk
+
+VERB:FORM 
+Verb Form
+Infinitives (with or without “to”), gerunds (-ing) and participles.
+to eat → eating, dancing → danced
+
+VERB:INFL 
+Verb Inflection
+Misapplication of tense morphology.
+getted → got, fliped → flipped
+
+VERB:SVA 
+Subject-Verb Agreement
+(He) have → (He) has
+
+VERB:TENSE 
+Verb Tense
+Includes inflectional and periphrastic tense, modal verbs and passivization.
+eats → ate, eats → has eaten, eats → can eat, eats → was eaten
+
+WO 
+Word Order 
+only can → can only

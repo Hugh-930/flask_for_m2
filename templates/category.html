@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Categories</title>
+    <link rel="stylesheet" href="../static/index.css" />
+</head>
+<body>
+    <div class="head">
+        <h1>Error Categories</h1>
+        <form action="/" class="btn">
+            <input type="submit" value="compare" class="btn">
+        </form>
+    </div>
+    
+    <canvas id="myChart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById("myChart");
+        var key = {{key|tojson}}
+        var value = {{value|tojson}}
+        var myChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: key,
+                datasets: [{
+                    label: 'number of error detected',
+                    data: value,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <table border="1">
+        <tr>
+            <th>Code</th>
+            <th>Meaning</th>
+            <th>Description / Example</th>
+        </tr>
+        {% for tr in error_categories %}
+            <tr>
+                <td>{{tr.split("\n")[0]}}</td>
+                <td>{{tr.split("\n")[1]}}</td>
+                <td>
+                    {% for line in tr.split("\n")[2:] %}
+                        <p>{{line}}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

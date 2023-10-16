@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>compareing src and trg</title>
+    <link rel="stylesheet" href="../static/index.css" />
+    <script type="text/javascript" src="../static/index.js"></script>
+</head>
+<body>
+    <div class="head">
+        <h1>compare</h1>
+        <form action="/category" class="btn">
+            <input type="submit" value="categorize" class="btn">
+        </form>
+        <form action="/prefix" class="btn">
+            <input type="submit" value="prefix" class="btn">
+        </form>
+    </div>
+    <h3>The average number of mistakes in the source: {{error_avg}}</h3>
+    <hr>
+    {% for str in combined %}
+    <table border="0">
+        <tr>
+            <td>source:  </td>
+            <td class="m2">{{str[0]}}</td>
+        </tr>
+        <tr>
+            <td>target:   </td>
+            <td class="m2">{{str[1]}}</td>
+        </tr>
+    </table>
+    <!-- <hr style="border:none;border-top: 1px solid #000;"> ? -->
+    <hr><hr>
+    {% endfor %}
+</body>
+</html>
