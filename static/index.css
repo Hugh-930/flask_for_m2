@@ -8,3 +8,29 @@
     margin-right: 40px;
     height: 3em;
 }
+
+.compare{
+    display: flex;
+    align-items: center;
+}
+
+.compare h3{
+     padding-right: 10px;
+}
+
+.parent_circle{
+    display: flex;
+    align-items: center;
+    height: 2em;
+}
+
+.parent_circle p{
+    margin-right: 2em;
+}
+
+.circle {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin-right: 5px;
+}

@@ -6,14 +6,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 var text = element.textContent;
                 var words = text.split(' ');
                 words.forEach(function (word, index) {
+                    var info;
                     if (word.includes('+++')) {
-                        words[index] = '<span style="background-color: yellowgreen;">' + word.replace("+++","") + '</span>';
+                        info = word.split("+++")
+                        words[index] = '<span title="'+info[0]+'" style="background-color: yellowgreen;">' + info[1] + '</span>';
                     }
                     if (word.includes('---')) {
-                        words[index] = '<span style="background-color: pink;">' + word.replace("---", "") + '</span>';
+                        info = word.split("---")
+                        words[index] = '<span title="'+info[0]+'" style="background-color: pink;">' + info[1] + '</span>';
+                    }
+                    if (word.includes("???")) {
+                        info = word.split("???")
+                        words[index] = '<span title="'+info[0]+'" style="background-color: yellow;">' + info[1] + '</span>';
                     }
                 });
-
+                
                 var coloredText = words.join(' ');
                 element.innerHTML = coloredText;
             });

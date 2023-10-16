@@ -91,10 +91,12 @@ def m2_to_sentences(m2):
             end = int(span[1])
             cor = edit[2].split()
 
-            cor = list(map(lambda s: "+++" + s, cor))
+            plus, minus = "+++", "---"
+            if prefix == "Replacement":  # if Replacement
+                plus = minus = "???"
+            cor = list(map(lambda s: code+plus+s, cor))
             for i in range(start, end):
-                orig[i] = "---" + orig[i]
-
+                orig[i] = code+minus+orig[i]
             cor_sent[start + offset:end + offset] = cor
             offset = offset - (end - start) + len(cor)
         trg.append(" ".join(cor_sent))

@@ -17,20 +17,32 @@
         </form>
     </div>
     <h3>The average number of mistakes in the source: {{error_avg}}</h3>
+    <div class="parent_circle">
+        <div class="circle" style="background-color: yellow;"></div>
+        <p>Replacement</p>
+        <div class="circle" style="background-color: yellowgreen;"></div>
+        <p>Missing</p>
+        <div class="circle" style="background-color: pink;"></div>
+        <p>Unnecessary</p>
+    </div>
     <hr>
     {% for str in combined %}
-    <table border="0">
-        <tr>
-            <td>source:  </td>
-            <td class="m2">{{str[0]}}</td>
-        </tr>
-        <tr>
-            <td>target:   </td>
-            <td class="m2">{{str[1]}}</td>
-        </tr>
-    </table>
+    <div class="compare">
+        <h3>{{ loop.index }}</h3>
+        <table border="0">
+            <tr>
+                <td>source: </td>
+                <td class="m2">{{str[0]}}</td>
+            </tr>
+            <tr>
+                <td>target: </td>
+                <td class="m2">{{str[1]}}</td>
+            </tr>
+        </table>
+    </div>
     <!-- <hr style="border:none;border-top: 1px solid #000;"> ? -->
-    <hr><hr>
+    <hr>
+    <hr>
     {% endfor %}
 </body>
 </html>
