@@ -8,8 +8,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    print('U can use this as a debagger', file=sys.stderr)
-    sys.stdout.flush()
     combined = [[i, j] for i, j in zip(src, trg)]
     error_avg = sum(error_num)/len(src)
 
@@ -31,10 +29,8 @@ def categorize():
 
     key = [k for k, v in category.items()]
     value = [v for k, v in category.items()]
-
     cat = open("./error_description.txt", "r").read().split("\n\n")
 
-    print(value, file=sys.stderr)
     return render_template(
         "category.html",
         key=key,
@@ -54,7 +50,6 @@ def prefix():
     key = [k for k, v in category.items()]
     value = [v for k, v in category.items()]
 
-    print(value, file=sys.stderr)
     return render_template(
         "prefix.html",
         key=key,
@@ -83,8 +78,8 @@ def m2_to_sentences(m2):
             if edit[1] in skip:
                 continue  # Ignore certain edits
             coder = int(edit[-1])
-            # if coder != args.id:
-            #     continue  # Ignore other coders
+            if coder != args.id:
+                continue  # Ignore other coders
 
             span = edit[0].split()[1:]  # Ignore "A "
             start = int(span[0])
@@ -125,8 +120,7 @@ def error_category(edit):
 
 
 def main(args):
-    m2_file = "./ABC.train.gold.bea19.m2"
-    print(args.file_input)
+    m2_file = "./test.m2"
     if args.file_input != None:
         m2_file = args.file_input
     m2 = open(m2_file, encoding="utf-8").read().strip().split("\n\n")
@@ -135,9 +129,14 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--file_input", "-f", help="path to the m2 file")
+    parser.add_argument("--file_input", "-f",
+                        help="path to the m2 file, defalt is ./test.m2")
+    parser.add_argument("--port", "-p", help="port number, defalt is 5000")
+    parser.add_argument("--id", help="defalt is 0")
     args = parser.parse_args()
-
     main(args)
 
-    app.run()
+    port = 5000
+    if args.port != None:
+        port = args.port
+    app.run(port=port)
