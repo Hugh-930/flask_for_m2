@@ -120,23 +120,19 @@ def error_category(edit):
 
 
 def main(args):
-    m2_file = "./test.m2"
-    if args.file_input != None:
-        m2_file = args.file_input
-    m2 = open(m2_file, encoding="utf-8").read().strip().split("\n\n")
+    m2 = open(args.file_input, encoding="utf-8").read().strip().split("\n\n")
     m2_to_sentences(m2)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--file_input", "-f",
-                        help="path to the m2 file, defalt is ./test.m2")
-    parser.add_argument("--port", "-p", help="port number, defalt is 5000")
-    parser.add_argument("--id", help="defalt is 0")
+                        help="path to the m2 file, defalt is ./test.m2",
+                        default="./test.m2")
+    parser.add_argument(
+        "--port", "-p", help="port number, defalt is 5000", default=5000)
+    parser.add_argument("--id", help="defalt is 0", default=0)
     args = parser.parse_args()
     main(args)
 
-    port = 5000
-    if args.port != None:
-        port = args.port
-    app.run(port=port)
+    app.run(port=args.port)
